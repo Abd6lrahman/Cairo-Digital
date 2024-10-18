@@ -1,4 +1,14 @@
 # Cairo-Digital
+![Logo](images/Logo_Cairo.png)
+
+This project is a digital platform for selling products.
+
+![UI Preview](images/UI-1.png)
+
+## Features
+- User-friendly interface
+- Responsive design
+
 Cairo Digital
 
 Cairo Digital is an e-commerce platform designed for selling electronics like PCs, laptops, and gaming consoles. It offers live search filtering, a detailed cart system, personalized checkout options, and product recommendations. The website ensures a seamless shopping experience with a responsive design.
