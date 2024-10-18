@@ -1,5 +1,5 @@
 # Cairo-Digital
-![Logo](images/logo%20design.gif)
+![Logo](images/logo-design.gif)
 
 This project is a digital platform for selling products.
 
