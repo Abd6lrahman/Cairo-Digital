@@ -1,0 +1,103 @@
+.formPage {
+    margin: 300px 0px 0px;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    height: 750px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Centering the form container */
+.contact-form-container {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+}
+
+.contact-form-container h2 {
+    margin-bottom: 20px;
+    font-size: 45px;
+}
+
+.contact-form-container label {
+    display: block;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.contact-form-container input,
+.contact-form-container textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.contact-form-container textarea {
+    resize: vertical; /* Allow vertical resizing only */
+    max-height: 250px;
+}
+
+.contact-form-container button {
+    padding: 10px 20px;
+    background-color: #ff5722;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+}
+
+.contact-form-container button:hover {
+    background-color: #e64a19;
+}
+
+.form-message {
+    margin-top: 20px;
+    color: green;
+    font-weight: bold;
+}
+
+/* Modal Styles */
+.form-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.form-modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 500px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.form-close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.form-close-btn:hover {
+    color: red;
+}

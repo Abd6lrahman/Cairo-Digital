@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <link rel="stylesheet" href="css/product_details.css">
+</head>
+<body>
+    <button class="back-button" onclick="goBackToProducts()">Back to Products</button>
+    
+    <div class="product-details-container">
+        <div class="image-carousel">
+
+            <div class="thumbnail-container" id="thumbnail-container">
+                <!-- Thumbnails will be dynamically inserted here -->
+            </div>
+            <div class="main-image-wrapper">
+                <img id="main-image" src="" alt="Product Image" class="main-image">
+            </div>
+
+        </div>
+        <div class="product-info">
+            <h2 id="product-name">Product Name</h2>
+            <div class="star-rating">
+                <span class="filled star">&#9733;</span>
+                <span class="filled star">&#9733;</span>
+                <span class="filled star">&#9733;</span>
+                <span class="filled star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span id="product-rating">(102 reviews)</span>
+            </div>
+            <p id="product-description">Product Description</p>
+            <p id="product-price" style="font-size: 19px; font-weight: bold;">$0</p>
+            <p id="delivery-estimate"><span style="font-weight: bold;" id="estimated-delivery"></span></p>
+            <button class="product_button add-to-cart-button" onclick="addToCartFromDetails()">Add to Cart</button>
+            <button class="product_button buy-now-button" onclick="buyNow()">Buy Now</button>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="modal" style="display: none;"> <!-- modal container -->
+        <div class="modal-content">
+            <span class="close" onclick="closeCart()">&times;</span> <!-- Close button -->
+            <h2>Cart Items</h2>
+            <div id="cart-items">
+                <!-- Cart items will be dynamically inserted here -->
+            </div>
+            <h3 id="total-price">Total: $0</h3> <!-- Total price -->
+            <button class="product_button" onclick="openCheckout()">Checkout</button> <!-- Checkout button -->
+        </div>
+    </div>
+
+
+    <!-- Checkout Modal -->
+    <div id="checkout-modal" class="modal" style="display: none;"> <!-- Checkout modal container -->
+        <div class="modal-content">
+            <span class="close" onclick="closeCheckout()">&times;</span> <!-- Close button -->
+            <h2>Checkout</h2>
+            <div class="checkout-details">
+                <p>Total Amount: $<span id="checkout-total">0</span></p>
+                <h3>Delivery Address</h3>
+                <form id="checkout-form">
+                    <label for="address">Address:</label><br>
+                    <textarea id="address" name="address" rows="4" cols="50" placeholder="Enter your delivery address here" required></textarea><br><br>
+                    <button type="button" onclick="submitOrder()">Submit</button> <!-- Submit button -->
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/product_data.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/product_details.js"></script>
+    <script src="js/second_page.js"></script>
+</body>
+</html>

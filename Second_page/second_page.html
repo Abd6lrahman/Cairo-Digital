@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cairo Digital</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/second_page.css">
+    <link rel="stylesheet" href="css/contact_us.css">
+    <link rel="stylesheet" href="../styles1.css">
+    <link rel="stylesheet" href="css/lastPage.css">
+</head>
+<body>
+
+                    <!--Main Page-->
+
+
+        <div class="first_page1">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid d-flex justify-content-between align-items-center">
+                <a class="navbar-brand" href="#">
+                    <img src="../images/Logo_Cairo.png" alt="Logo" width="100">
+                </a>
+    
+                <!-- Location and Delivery -->
+                <div class="d-flex align-items-center location">
+                    <i class="bi bi-geo-alt"></i>
+                    <div class="text-white ms-2" style="font-size: 12px;">
+                        <span>Deliver to</span><br>
+                        <span id="locationButton" style="font-weight: bold; cursor: pointer;">Choose Location</span>
+                    </div>
+                </div>
+    
+                <!-- Category dropdown and search bar -->
+                <form class="search-bar d-flex me-auto" role="search" id="searchForm">
+                    <div class="input-group" style="flex-grow: 1;">
+                        <select class="form-select" id="categorySelect" aria-label="Category select" style="border-right: none;">
+                            <option selected>All</option>
+                            <option value="Electronics">Electronics</option>
+                            <option value="Mouse">Mouse</option>
+                            <option value="Keyboard">Keyboard</option>
+                            <option value="Laptop">Laptop</option>
+                            <option value="Smartphones">Smartphones</option>
+                        </select>
+                      <input class="form-control" id="search-bar" id="searchInput" type="search" placeholder="Search Cairo Digital" aria-label="Search" onkeyup="filterProducts()">
+                        <button class="btn btn-warning" type="submit" style="border-left: none;">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
+                </form>
+    
+                <!-- Right side navbar items -->
+                <div class="navbar-nav right-links">
+                    <a class="nav-link" href="../login/login.html">EN</a>
+                    <a class="nav-link" id="userLink" href="../login/login.html">Hello, Sign in</a>
+                    <a class="nav-link" href="#">Returns & Orders</a>
+                    <div class="nav-link cart" id="cart-button" onclick="showCart()">
+                        <i class="bi bi-cart3"></i>
+                        <span class="cart-count" id="cart-count">0</span>
+                        Cart
+                    </div>
+                </div>
+            </div>
+        </nav>
+    
+        <!-- Main Content with Background -->
+             <section id="gamingStoreSection" class="products-section gaming-background mt-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card product-card">
+                            <div class="card-body">
+                                <h5 class="card-title">Level up your gaming</h5>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <img src="../images/laptopgaming.png" class="img-fluid" alt="Laptops">
+                                        <p>Laptops</p>
+                                    </div>
+                                    <div class="col-6">
+                                        <img src="../images/Xbox.png" class="img-fluid" alt="Xbox">
+                                        <p>Xbox</p>
+                                    </div>
+                                    <div class="col-6">
+                                        <img src="../images/Playstation.png" class="img-fluid" alt="Playstation">
+                                        <p>Playstation</p>
+                                    </div>
+                                    <div class="col-6">
+                                        <img src="../images/Nintendo Switch.png" class="img-fluid" alt="Nintendo Switch">
+                                        <p>Nintendo Switch</p>
+                                    </div>
+                                </div>
+                                <a href="#ProductsStart" class="btn-link">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card product-card">
+                            <div class="card-body">
+                                <h5 class="card-title">Score the top PCs & Accessories</h5>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <img src="../images/Desktop.png" class="img-fluid" alt="Desktop">
+                                        <p>Desktop</p>
+                                    </div>
+                                    <div class="col-6">
+                                        <img src="../images/laptop.png" class="img-fluid" alt="Laptops">
+                                        <p>Laptops</p>
+                                    </div>
+                                    <div class="col-6">
+                                        <img src="../images/Hard drives.png" class="img-fluid" alt="Hard drives">
+                                        <p>Hard drives</p>
+                                    </div>
+                                    <div class="col-6">
+                                        <img src="../images/PC accessories.png" class="img-fluid" alt="PC accessories">
+                                        <p>PC accessories</p>
+                                    </div>
+                                </div>
+                                <a href="#ProductsStart" class="btn-link">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card product-card">
+                            <div class="card-body">
+                                <h5 class="card-title">Get your game on</h5>
+                                <img src="../images/Gaming PCs.png" class="img-fluid" alt="Gaming PCs">
+                                <p>Gaming PCs, Accessories</p>
+                                <a href="#ProductsStart" class="btn-link">Shop gaming</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <!-- JavaScript to handle the user login display and location modal -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+        const userName = localStorage.getItem('userName');
+        const userLink = document.getElementById('userLink');
+        const cartCountElement = document.getElementById('cart-count');
+        const locationButton = document.getElementById('locationButton');
+        const searchForm = document.getElementById('searchForm');
+        const categorySelect = document.getElementById('categorySelect');
+        const searchInput = document.getElementById('searchInput');
+    
+        // Update user name in navbar if logged in
+        if (userName) {
+            userLink.textContent = `Hello, ${userName}`;
+        }
+    
+        // Open Location Modal
+        locationButton.addEventListener('click', function() {
+            const locationModal = new bootstrap.Modal(document.getElementById('locationModal'));
+            locationModal.show();
+        });
+    
+        // Save location and ZIP code
+        document.getElementById('saveLocationButton').addEventListener('click', function() {
+            const selectedLocation = document.getElementById('locationSelect').value;
+            const zipCode = document.getElementById('zipCodeInput').value;
+    
+            // Update the location button with the selected location and ZIP code
+            locationButton.textContent = `Deliver to ${selectedLocation}, ${zipCode}`;
+    
+            // Close modal after saving
+            const locationModal = bootstrap.Modal.getInstance(document.getElementById('locationModal'));
+            locationModal.hide();
+        });
+    
+        // Update search input when category is selected
+        categorySelect.addEventListener('change', function() {
+            const selectedCategory = categorySelect.value;
+            if (selectedCategory && selectedCategory !== 'All') {
+                searchInput.value = selectedCategory; 
+            } else {
+                searchInput.value = '';  
+            }
+        });
+    
+        // Handle form submission for search
+        searchForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const searchQuery = searchInput.value.trim();
+    
+            // Log the search query or send it to the server
+            console.log("Searching for:", searchQuery);
+    
+            // You can now use searchQuery to perform your search logic here
+        });
+    });
+           
+        </script>
+    
+        <!-- Modal for location selection -->
+        <div class="modal fade" id="locationModal" tabindex="-1" aria-labelledby="locationModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="locationModalLabel">Choose your location</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <select id="locationSelect" class="form-select">
+                            <option value="Egypt">Egypt</option>
+                            <option value="Palestine">Palestine</option>
+                            <option value="Sudan">Sudan</option>
+                        </select>
+                        <input type="text" class="form-control mt-2" placeholder="Enter ZIP Code" id="zipCodeInput">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" id="saveLocationButton">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        
+        
+    </div>
+    
+
+                  <!-- Products Page -->
+
+
+    <h2 class="HeadProducts" id="ProductsStart">Products</h2>
+    <div class="parent_secPage" id="productsTop">
+        <div class="product_secPage">
+            <img src="Images/keyboard1.jpg" alt="Product 1" onclick="navigateToDetails('product1')"> <br>
+            <p class="product__name">Keyboard</p>
+            <div class="star-rating">
+                <span class="filled star">&#9733;</span>
+                <span class="filled star">&#9733;</span>
+                <span class="filled star">&#9733;</span>
+                <span class="filled star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span>(102 reviews)</span>
+            </div>
+            <p class="product_price">$250</p>
+            <button class="product_button add-to-cart-button" onclick="addToCart('product1')">Add to Cart</button>
+        </div>
+
+        <div class="product_secPage">
+            <img src="Images/laptop1.png" alt="Product 2"  onclick="navigateToDetails('product2')"> <br>
+            <p class="product__name">Laptop</p>
+            <div class="star-rating">
+                <span class="filled star">&#9733;</span>
+                <span class="filled star">&#9733;</span>
+                <span class="filled star">&#9733;</span>
+                <span class="filled star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span>(102 reviews)</span>
+            </div>
+            <p class="product_price">$700</p>
+            <button class="product_button add-to-cart-button" onclick="addToCart('product2')">Add to Cart</button>
+        </div>
+
+        
+        <div class="product_secPage">
+            <img src="Images/playstation3.jpg" alt="Product 3" onclick="navigateToDetails('product3')"> <br>
+            <p class="product__name">PlayStation</p>
+            <div class="star-rating">
+                <span class="filled star">&#9733;</span>
+                <span class="filled star">&#9733;</span>
+                <span class="filled star">&#9733;</span>
+                <span class="filled star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span>(102 reviews)</span>
+            </div>
+            <p class="product_price">$400</p>
+            <button class="product_button add-to-cart-button" onclick="addToCart('product3')">Add to Cart</button>
+        </div>
+        
+        <div class="product_secPage">
+            <img src="Images/laptop3.0.jpg" alt="Product 4" onclick="navigateToDetails('product4')"> <br>
+            <p class="product__name">Laptop</p>
+            <div class="star-rating">
+                <span class="filled star">&#9733;</span>
+                <span class="filled star">&#9733;</span>
+                <span class="filled star">&#9733;</span>
+                <span class="filled star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span>(102 reviews)</span>
+            </div>
+            <p class="product_price">$550</p>
+            <button class="product_button add-to-cart-button" onclick="addToCart('product4')">Add to Cart</button>
+        </div>
+        
+        
+        <div class="product_secPage">
+            <img src="Images/controller1.0.jpg" alt="Product 5" onclick="navigateToDetails('product5')"> <br>
+            <p class="product__name">Controller</p>
+            <div class="star-rating">
+                <span class="filled star">&#9733;</span>
+                <span class="filled star">&#9733;</span>
+                <span class="filled star">&#9733;</span>
+                <span class="filled star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span>(102 reviews) </span>
+            </div>
+            <p class="product_price">$70</p>
+            <button class="product_button add-to-cart-button" onclick="addToCart('product5')">Add to Cart</button>
+        </div>
+        
+        
+        <div class="product_secPage">
+            <img src="Images/laptop2.jpg" alt="Product 6" onclick="navigateToDetails('product6')"> <br>
+            <p class="product__name">Laptop</p>
+            <div class="star-rating">
+                <span class="filled" id="star">&#9733;</span>
+                <span class="filled" id="star">&#9733;</span>
+                <span class="filled" id="star">&#9733;</span>
+                <span class="filled" id="star">&#9733;</span>
+                <span class="star" id="star">&#9733;</span>
+                <span>(102 reviews) </span>
+            </div>
+            <p class="product_price">$1300</p>
+            <button class="product_button add-to-cart-button" onclick="addToCart('product6')">Add to Cart</button>
+        </div>
+        
+        
+        <div class="product_secPage">
+            <img src="Images/keyboard2.png" alt="Product 7" onclick="navigateToDetails('product7')"> <br>
+            <p class="product__name">Keyboard</p>
+            <div class="star-rating">
+                <span class="filled" id="star">&#9733;</span>
+                <span class="filled" id="star">&#9733;</span>
+                <span class="filled" id="star">&#9733;</span>
+                <span class="filled" id="star">&#9733;</span>
+                <span class="star" id="star">&#9733;</span>
+                <span>(102 reviews) </span>
+            </div>
+            <p class="product_price">$150</p>
+            <button class="product_button add-to-cart-button" onclick="addToCart('product7')">Add to Cart</button>
+        </div>
+        
+        
+        <div class="product_secPage">
+            <img src="Images/playstation1.jpg" alt="Product 8" onclick="navigateToDetails('product8')"> <br>
+            <p class="product__name">Playstation</p>
+            <div class="star-rating">
+                <span class="filled" id="star">&#9733;</span>
+                <span class="filled" id="star">&#9733;</span>
+                <span class="filled" id="star">&#9733;</span>
+                <span class="filled" id="star">&#9733;</span>
+                <span class="star" id="star">&#9733;</span>
+                <span>(102 reviews) </span>
+            </div>
+            <p class="product_price">$400</p>
+              <button class="product_button add-to-cart-button" onclick="addToCart('product8')">Add to Cart</button>
+        </div>
+        
+
+        
+        <div class="product_secPage">
+            <img src="Images/Controller2.webp" alt="Product 9" onclick="navigateToDetails('product9')"> <br>
+            <p class="product__name">Controller</p>
+            <div class="star-rating">
+                <span class="filled" id="star">&#9733;</span>
+                <span class="filled" id="star">&#9733;</span>
+                <span class="filled" id="star">&#9733;</span>
+                <span class="filled" id="star">&#9733;</span>
+                <span class="star" id="star">&#9733;</span>
+                <span>(102 reviews) </span>
+            </div>
+            <p class="product_price">$120</p>
+            <button class="product_button add-to-cart-button" onclick="addToCart('product9')">Add to Cart</button>
+        </div>
+        
+        
+        <div class="product_secPage">
+            <img src="Images/keyboard3.0.jpg" alt="Product 10" onclick="navigateToDetails('product10')"> <br>
+            <p class="product__name">Keyboard</p>
+            <div class="star-rating">
+                <span class="filled" id="star">&#9733;</span>
+                <span class="filled" id="star">&#9733;</span>
+                <span class="filled" id="star">&#9733;</span>
+                <span class="filled" id="star">&#9733;</span>
+                <span class="star" id="star">&#9733;</span>
+                <span>(102 reviews) </span>
+            </div>
+            <p class="product_price">$370</p>
+            <button class="product_button add-to-cart-button" onclick="addToCart('product10')">Add to Cart</button>
+        </div>
+        
+        
+        <div class="product_secPage">
+            <img src="Images/playstation2.0.jpg" alt="Product 11" onclick="navigateToDetails('product11')"> <br>
+            <p class="product__name">Playstation</p>
+            <div class="star-rating">
+                <span class="filled" id="star">&#9733;</span>
+                <span class="filled" id="star">&#9733;</span>
+                <span class="filled" id="star">&#9733;</span>
+                <span class="filled" id="star">&#9733;</span>
+                <span class="star" id="star">&#9733;</span>
+                <span>(102 reviews) </span>
+            </div>
+              <p class="product_price">$650</p>
+              <button class="product_button add-to-cart-button" onclick="addToCart('product11')">Add to Cart</button>
+            </div>
+            
+            
+            <div class="product_secPage">
+                <img src="Images/keyboard4.0.jpg" alt="Product 12" onclick="navigateToDetails('product12')"> <br>
+                <p class="product__name">Keyboard</p>   
+                <div class="star-rating">
+                    <span class="filled" id="star">&#9733;</span>
+                    <span class="filled" id="star">&#9733;</span>
+                    <span class="filled" id="star">&#9733;</span>
+                    <span class="filled" id="star">&#9733;</span>
+                    <span class="star" id="star">&#9733;</span>
+                    <span>(102 reviews) </span>
+                </div>
+                <p class="product_price">$190</p>
+                <button class="product_button add-to-cart-button" onclick="addToCart('product12')">Add to Cart</button>
+            </div>
+            
+        </div>
+
+        <!-- Cart Modal -->
+        <div id="cart-modal" class="modal" style="display: none;"> <!-- modal container -->
+            <div class="modal-content">
+                <span class="close" onclick="closeCart()">&times;</span> <!-- Close button -->
+                <h2>Cart Items</h2>
+                <div id="cart-items">
+                    <!-- Cart items will be dynamically inserted here -->
+                </div>
+                <h3 id="total-price">Total: $0</h3> <!-- Total price -->
+                <button class="product_button" onclick="openCheckout()">Checkout</button> <!-- Checkout button -->
+            </div>
+        </div>
+        
+        
+        <!-- Checkout Modal -->
+        <div id="checkout-modal" class="modal" style="display: none;"> <!-- Container -->
+            <div class="modal-content">
+                <span class="close" onclick="closeCheckout()">&times;</span> <!-- Close button -->
+                <h2>Checkout</h2>
+                <div class="checkout-details">
+                    <p>Total Amount: $<span id="checkout-total">0</span></p>
+                    <h3>Delivery Address</h3>
+                    <form id="checkout-form">
+                        <label for="address">Address:</label><br>
+                        <textarea id="address" name="address" rows="4" cols="50" placeholder="Enter your delivery address here" required></textarea><br><br>
+                        <button type="button" onclick="submitOrder()">Submit</button> <!-- Submit button -->
+                    </form>
+                </div>
+            </div>  
+        </div>
+        
+        <!-- Back to Top Button -->
+        <div id="backToTop" class="back-to-top">Back to Top</div>
+        
+        
+        
+
+        
+        <!-- Form page -->
+        <div class="formPage">
+            <div class="contact-form-container">
+                <h2>Contact Us</h2>
+                <form id="contact-form">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Your Email" required>
+                    
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Your Phone Number" required>
+                    
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+                    
+                    <button type="submit">Submit</button>
+                </form>
+        <p id="form-message" class="form-message"></p>
+    </div>
+    
+    <!-- Modal -->
+    <div id="modal" class="form-modal">
+        <div class="form-modal-content">
+            <span class="form-close-btn">&times;</span>
+            <p id="modal-message"></p> <!-- Modal content will be here -->
+        </div>
+    </div>
+
+</div>
+
+
+
+            <!--- Last Page -->
+
+
+<div class="LastPage">
+
+    <footer>
+        <div class="footer-container">
+            
+            <div class="footer-links">
+                <!-- Footer Columns -->
+                <div class="footer-column">
+                    <h3>Get to Know Us</h3>
+                    <ul>
+                        <li><a href="#">About Cairo Digital</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Investor Relations</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Make Money with Us</h3>
+                    <ul>
+                        <li><a href="#">Sell products on Cairo Digital</a></li>
+                        <li><a href="#">Become an Affiliate</a></li>
+                        <li><a href="#">Advertise Your Products</a></li>
+                        <li><a href="#">See More Make Money with Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Cairo Digital Payment Products</h3>
+                    <ul>
+                        <li><a href="#">Cairo Digital Business Card</a></li>
+                        <li><a href="#">Reload Your Balance</a></li>
+                        <li><a href="#">Shop with Points</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Let Us Help You</h3>
+                    <ul>
+                        <li><a href="#">Your Account</a></li>
+                        <li><a href="#">Your Orders</a></li>
+                        <li><a href="#">Shipping Rates & Policies</a></li>
+                        <li><a href="#">Returns & Replacements</a></li>
+                        <li><a href="#">Help</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="logo-and-dropdowns">
+                <!-- Logo -->
+                <div class="logo">
+                    <img src="../images/Logo_Cairo.png" alt="photo" class="lastLogo">
+                </div>
+                
+                <!-- Dropdown lists -->
+                <div class="dropdowns">
+                    <!-- Language Dropdown -->
+                    <select id="language-dropdown">
+                        <option value="english" selected>English</option>
+                        <option value="arabic">Arabic</option>
+                        <option value="french">French</option>
+                        <option value="spanish">Spanish</option>
+                        <option value="german">German</option>
+                        <option value="chinese">Chinese</option>
+
+                    </select>
+
+                    <!-- Currency Dropdown -->
+                    <select id="currency-dropdown">
+                        <option value="usd" selected>USD</option>
+                        <option value="egp">EGP</option>
+                        <option value="eur">EUR</option>
+                        <option value="gbp">GBP</option>
+                        <option value="cny">CNY</option>
+                        <option value="jpy">JPY</option>
+                    </select>
+
+                    <!-- Country Dropdown -->
+                    <select id="country-dropdown">
+                        <option value="egypt" selected>Egypt</option>
+                        <option value="usa">USA</option>
+                        <option value="france">France</option>
+                        <option value="spain">Spain</option>
+                        <option value="germany">Germany</option>
+                        <option value="china">China</option>
+
+                    </select>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+</div>
+
+
+
+<!-- External scripts -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+<script src="js/product_data.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/second_page.js"></script>
+<script src="js/contact_us.js"></script>
+</body>
+</html>

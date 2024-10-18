@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - Cairo Digital</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+    <style>
+        .fade-in {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .fade-in.show {
+            opacity: 1;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-10px); }
+            40%, 80% { transform: translateX(10px); }
+        }
+
+        .shake {
+            animation: shake 0.5s;
+        }
+
+        .btn-grow {
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .btn-grow:active {
+            transform: scale(1.1);
+        }
+
+        img {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        img:hover {
+            transform: scale(1.05);
+        }
+
+        @keyframes slide-in {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .slide-in {
+            animation: slide-in 0.8s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5 fade-in">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="text-center mb-4">
+                    <img src="../images/Logo_Cairo.png" alt="Cairo Digital Logo" width="200" class="logo-spin">
+                </div>
+                <h2 class="text-center">Sign In</h2>
+                <form id="loginForm">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email address</label>
+                        <input type="email" class="form-control slide-in" id="email" placeholder="Enter email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control slide-in" id="password" placeholder="Password" required>
+                    </div>
+                    <div id="error-message" class="text-danger mb-3" style="display: none;">Invalid credentials!</div>
+                    <button type="submit" class="btn btn-primary w-100 btn-grow">Sign in</button>
+                    <p class="text-center mt-3">or <a href="register.html">Create your account</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const formContainer = document.querySelector('.container');
+            formContainer.classList.add('show');
+
+            document.querySelectorAll('.btn').forEach(button => {
+                button.classList.add('btn-grow');
+            });
+
+            const formFields = document.querySelectorAll('input');
+            formFields.forEach((field, index) => {
+                field.style.animationDelay = `${index * 0.1}s`;
+                field.classList.add('slide-in');
+            });
+
+            document.getElementById('loginForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                const formContainer = document.querySelector('.container');
+
+                const storedEmail = localStorage.getItem('userEmail');
+                
+                if (email === storedEmail) {
+                    window.location.href = '../index.html'; 
+                } else {
+                    document.getElementById('error-message').style.display = 'block';
+                    formContainer.classList.add('shake');  
+
+                    setTimeout(() => {
+                        formContainer.classList.remove('shake');
+                    }, 500);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

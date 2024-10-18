@@ -1,0 +1,261 @@
+/* second_page.css */
+
+/* Search Bar */
+/* #search-bar {
+    margin: 20px 120px;
+    padding: 10px;
+    width: 80%;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 3px solid #919191;
+  } */
+  
+  
+  /* Cart Button */
+  /* #cart-button {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    background-color: #ff5722;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  } */
+  
+  /* #cart-button:hover {
+    background-color: #e64a19;
+  }
+   */
+  
+.HeadProducts{
+  font-size: 70px;
+  margin: 0px 0px 60px 60px;
+}
+
+
+  .parent_secPage{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center; /* Center the products */
+  }
+  .product_secPage{
+      width: 20%;
+      margin: 30px;
+      text-align: center;
+  }
+  
+  .product_secPage img{
+      width: 85%;
+      height: 150px;
+      cursor: pointer;
+      border-radius: 8px;
+  }
+  
+  .product__name{
+    font-size: 20px;
+    margin: 10px 0px;
+  }
+  
+  .product_price{
+      font-size: 20px;
+      margin: 10px 0px;
+  }
+  
+  .product_button{
+      background-color: #ff5722;
+      color: white;
+      width: 90%;
+      height: 40px;
+      border: none;
+      border-radius: 20px;
+      font-size: 16px;
+      cursor: pointer;
+  }
+  
+  .product_button:hover{
+      background-color: #e64a19;
+  }
+  
+  /* Star Rating */
+  .star-rating .star{
+      display: inline-block;
+      font-size: 1.2em;
+      letter-spacing: -2px;
+  }
+  
+  .star-rating .star {
+      color: #d3d3d3; /* Color for empty stars */
+  }
+  
+  .star-rating .filled {
+      color: #ffd700; /* Color for filled stars */
+  }
+  
+  /* Cart Modal */
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 2000; /* always stay on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* bg color black with some opacity*/
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 8px;
+    position: relative;
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+  }
+  
+  #cart-items {
+    margin: 20px 0;
+  }
+  
+  .cart-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .cart-item img {
+    width: 80px;
+    height: auto;
+    margin-right: 15px;
+    border-radius: 5px;
+  }
+  
+  .cart-item-details {
+    flex-grow: 1;
+  }
+  
+  .cart-item-details p {
+    margin: 5px 0;
+  }
+  
+  .remove-button {
+    background-color: #ff5722;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .remove-button:hover {
+    background-color: #e64a19;
+  }
+  
+  #total-price {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: right;
+  }
+  
+  .modal-content button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .modal-content button:hover {
+    background-color: #45a049;
+  }
+  
+  
+  /* Checkout-modal*/
+  
+  #checkout-modal .modal-content {
+    width: 60%;
+  }
+  
+  .checkout-details p {
+    font-size: 18px;
+    margin: 10px 0;
+  }
+  
+  #checkout-form textarea {
+    width: 99%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    resize: vertical; /* Allow vertical resizing only */
+    max-height: 250px;
+  }
+  
+  #checkout-form button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  #checkout-form button:hover {
+    background-color: #218838;
+  }
+  
+
+  /* Back to Top Button */
+#backToTop {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #3498db;
+  color: white;
+  padding: 10px 15px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: block;
+  opacity: 0;    /* Invisible until scrolled down */
+  pointer-events: none; /* Disable click when hidden */
+  transition: opacity 0.5s ease, transform 0.3s ease;
+  z-index: 1000;
+}
+
+#backToTop:hover {
+  background-color: #2980b9;
+}
+
+/* Add an effect when showing */
+#backToTop.show {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto; /* Enable click when visible */
+}
+
+#backToTop.hide {
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none; /* Disable click when hidden */
+}
