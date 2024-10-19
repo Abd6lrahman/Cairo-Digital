@@ -5,13 +5,13 @@ This project is a digital platform for selling products.
 
 ## Create Account Page
 
-![Create Account Page](images/Create-Account-Page.png.jpeg)
+![Create Account Page](images/Create-Account-Page.jpeg)
 
 This page allows users to create an account by entering their name, email, and password.
 
 ## Sign In Page
 
-![Sign In Page](images/Sign-In-Page.png.jpeg)
+![Sign In Page](images/Sign-In-Page.jpeg)
 
 This page allows users to sign in using their email and password.
 
